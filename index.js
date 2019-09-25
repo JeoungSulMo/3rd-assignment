@@ -1,12 +1,27 @@
 window.onload = function() {
 	const app = document.querySelector("#app");
+	const cardCss = document.querySelector(".card");
 	const loading = document.createElement("p");
 	loading.innerText = "Loading...";
 	app.appendChild(loading);
-		
+	
+	const body = document.querySelector("body");
+	body.className += "container";
+	
+	
+
+	function appStyle(app) {
+		app.className += "row";
+		app.style.padding="50px";
+		app.style.display="flex";
+		app.style.flexWrap="wrap";
+		app.style.justifyContent="space-around";
+	}
+
 
 	function makeMovieList(object){
 		app.removeChild(loading);
+
 		for(i=0;i<20;i++){
 		const title = document.createElement("p");
 		const img = document.createElement("img");
@@ -18,12 +33,16 @@ window.onload = function() {
 		img.src = `${movieImg}`;
 		desc.innerText = `${movieContent}`;
 		const card = document.createElement("div");
+		card.className += "card col-md-6 col-sm-12";
+		console.log(card);
 		card.append(img, title, desc);
-		
-		app.appendChild(card);	
+		app.appendChild(card);
 		}
 		
 	}
+
+	
+
 	function fetching(){
 		fetch(`https://yts.lt/api/v2/list_movies.json?quality=3D`).then(function(response){
 			return response.json()
@@ -38,6 +57,7 @@ window.onload = function() {
 		// for(i=0 ; i<20; i++){
 			 
 			fetching();
+			appStyle(app);
 			
 		// }
 	}
