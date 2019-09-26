@@ -1,22 +1,21 @@
 window.onload = function() {
 	const app = document.querySelector("#app");
-	const cardCss = document.querySelector(".card");
 	const loading = document.createElement("p");
 	loading.innerText = "Loading...";
 	app.appendChild(loading);
 	
-	const body = document.querySelector("body");
-	body.className += "container";
 	
-	
-
 	function appStyle(app) {
-		app.className += "row";
-		app.style.padding="50px";
-		app.style.display="flex";
-		app.style.flexWrap="wrap";
-		app.style.justifyContent="space-around";
+		app.classList.add("row");
+		const opt = {
+			padding: "50px",
+			display: "flex",
+			flexWrap: "wrap",
+			justifyContent: "space-around",
+		}
+		Object.assign(app.style, opt);
 	}
+
 
 
 	function makeMovieList(object){
@@ -26,6 +25,8 @@ window.onload = function() {
 		const title = document.createElement("p");
 		const img = document.createElement("img");
 		const desc = document.createElement("p");
+		desc.classList.add("content");
+		title.classList.add("title");
 		const movieTitle = object.data.movies[i].title_long;
 		const movieImg = object.data.movies[i].medium_cover_image;
 		const movieContent = object.data.movies[i].description_full;
@@ -33,10 +34,19 @@ window.onload = function() {
 		img.src = `${movieImg}`;
 		desc.innerText = `${movieContent}`;
 		const card = document.createElement("div");
-		card.className += "card col-md-6 col-sm-12";
-		console.log(card);
-		card.append(img, title, desc);
+		card.className += "col-md-6 col-sm-12";
+		const cardIn = document.createElement("div");
+		cardIn.className += "movie";
+		const wrapper1 = document.createElement("div");
+		wrapper1.classList.add("movieCol1");
+		const wrapper2 = document.createElement("div");
+		wrapper2.classList.add("movieCol2");
+		wrapper1.append(img);
+		wrapper2.append(title, desc);
+		cardIn.appendChild(wrapper1);
+		cardIn.appendChild(wrapper2);
 		app.appendChild(card);
+		card.appendChild(cardIn);
 		}
 		
 	}

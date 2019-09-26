@@ -1,0 +1,47 @@
+body {
+    background-color: #eff3f7;
+}
+
+img {
+    width:100%;
+}
+
+.movie {
+    padding: 0 20px;        
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    box-shadow: 0 8px 38px rgba(133, 133, 133, 0.3), 0 5px 12px rgba(133, 133, 133, 0.22);
+    width: 95%;
+    height: 80%;
+}
+
+.content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* 라인수 */ 
+    -webkit-box-orient: vertical; 
+    word-wrap:break-word;
+    font-size : 14px;
+    color: #b4b5bd;
+}
+.title {
+    font-size : 20px;
+    font-weight: 600;
+}
+
+.movieCol1 {
+    width:33%;
+    position: relative;
+    top: -20px;
+    box-shadow: -10px 19px 38px rgba(83,83,83,.3), 10px 15px 12px rgba(80,80,80,.22);
+}
+.movieCol2 {
+    padding :10% 0;
+    width:60%;
+}
